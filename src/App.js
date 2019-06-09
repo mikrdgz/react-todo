@@ -21,7 +21,6 @@ this.setState({input: event.target.value})
   }
 
   formSubmit = event =>{
-    console.log(this.state.items)
     event.preventDefault();
     this.setState({
       items: [...this.state.items, this.state.input],
@@ -30,15 +29,18 @@ this.setState({input: event.target.value})
   }
 
   render() {
-    console.log("**this is state**", this.state.isOn);
+    console.log(this.state.items);
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <form onSubmit = {this.formSubmit}>
+<h1>To do App</h1>          
+<form onSubmit = {this.formSubmit}>
             <input value = {this.state.input} onChange={this.inputUpdate} />
             <button>Submit</button>
           </form>
+          <ul>{this.state.items.map(function(item,index){
+            return <li key={index}>{item}</li>
+          })}</ul>
         </header>
       </div>
     );
